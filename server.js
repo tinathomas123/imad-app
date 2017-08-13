@@ -57,6 +57,8 @@ function createHtmlTemplate(data){
                     <input type="text" id="comments" />
                     <input type="submit" id="commentsButton" />
                 </div>
+                <div id="display">
+                </div>
             </body>
         </html>`;
         
@@ -83,6 +85,13 @@ app.get('/:articleName', function (req, res) {
   res.send(createHtmlTemplate(articles[articleName]));
 });
 
+var commentsButton=document.getElementById('commentsButton');
+commentsButton.onclick=function(){
+    var comments=document.getElementById('comments').innerHTML;
+    var display=document.getElementById('display');
+    display.innerHTML=comments;
+    
+}
 
 // Do not change port, otherwise your app won't run on IMAD servers
 // Use 8080 only for local development if you already have apache running on 80
