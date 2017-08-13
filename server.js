@@ -55,7 +55,7 @@ function createHtmlTemplate(data){
                 <div>
                     Comments: <br />
                     <input type="text" id="comments" />
-                    <input type="submit" id="commentsButton" />Submit
+                    <input type="submit" id="commentsButton" />
                 </div>
             </body>
         </html>`;
