@@ -46,6 +46,8 @@ function createHtmlTemplate(data){
                 <title>
                     ${title}
                 </title>
+                <script type="text/javascript" src="/ui/main.js">
+                </script>
             </header>
             <body>
                 ${header}
