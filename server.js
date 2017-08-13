@@ -8,21 +8,21 @@ app.use(morgan('combined'));
 var articles={
     
     articleOne:{
-        title: "Article One",
-        header: "Article One",
-        content: "This is my first article."
+        title: 'Article One',
+        header: 'Article One',
+        content: 'This is my first article.'
     },
     
     articleTwo:{
-        title: "Article Two",
-        header: "Article Two",
-        content: "This is my second article."
+        title: 'Article Two',
+        header: 'Article Two',
+        content: 'This is my second article.'
     },
     
     articleThree:{
-        title: "Article Three",
-        header: "Article Three",
-        content: "This is my third article."
+        title: 'Article Three',
+        header: 'Article Three',
+        content: 'This is my third article.'
     }
 };
 
