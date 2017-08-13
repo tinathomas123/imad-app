@@ -37,7 +37,7 @@ function createHtmlTemplate(data){
     var title=data.title;
     var content=data.content;
     var header=data.header;
-    
+    alert('inside server.js');
     var htmlTemplate=
         
         `
