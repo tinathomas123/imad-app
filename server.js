@@ -38,7 +38,7 @@ function createHtmlTemplate(data){
         <html>
             <header>
                 <title>
-                    ${title};
+                    ${title}
                 </title>
             </header>
             <body>
