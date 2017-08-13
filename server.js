@@ -5,7 +5,7 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var articles={
+/*var articles={
     
     articleOne:{
         title: 'Article One',
@@ -24,7 +24,13 @@ var articles={
         header: 'Article Three',
         content: 'This is my third article.'
     }
-};
+};*/
+
+var articleOne={
+        title: 'Article One',
+        header: 'Article One',
+        content: 'This is my first article.'
+    };
 
 function createHtmlTemplate(data){
     
@@ -69,10 +75,10 @@ app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
 
-app.get('/:articleName', function (req, res) {
+app.get('/articleOne', function (req, res) {
   
-  var articleName=req.params.articleName;
-  res.send(createHtmlTemplate(articles[articleName]));
+  //var articleName=req.params.articleName;
+  res.send(createHtmlTemplate(articleOne));
 });
 
 
