@@ -31,7 +31,7 @@ var articles={
         header: 'Article One',
         content: 'This is my first article.'
     };*/
-alert('inside server.js');
+
 function createHtmlTemplate(data){
     
     var title=data.title;
@@ -46,8 +46,7 @@ function createHtmlTemplate(data){
                 <title>
                     ${title}
                 </title>
-                <script type="text/javascript" src="/ui/main.js">
-                </script>
+                
             </header>
             <body>
                 ${header}
@@ -61,6 +60,8 @@ function createHtmlTemplate(data){
                 </div>
                 <div id="display">
                 </div>
+                <script type="text/javascript" src="/ui/main.js">
+                </script>
             </body>
         </html>`;
         
