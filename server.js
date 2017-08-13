@@ -52,6 +52,11 @@ function createHtmlTemplate(data){
                 <div>
                     ${content}
                 </div>
+                <div>
+                    Comments: <br />
+                    <input type="text" id="comments" />
+                    <input type="submit" id="commentsButton" />Submit
+                </div>
             </body>
         </html>`;
         
