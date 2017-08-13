@@ -31,13 +31,13 @@ var articles={
         header: 'Article One',
         content: 'This is my first article.'
     };*/
-
+alert('inside server.js');
 function createHtmlTemplate(data){
     
     var title=data.title;
     var content=data.content;
     var header=data.header;
-    alert('inside server.js');
+    
     var htmlTemplate=
         
         `
