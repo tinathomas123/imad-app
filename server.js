@@ -86,15 +86,9 @@ app.get('/:articleName', function (req, res) {
   res.send(createHtmlTemplate(articles[articleName]));
 });
 
-var commentsButton=document.getElementById('commentsButton');
-commentsButton.onclick=function(){
-    alert('hi');
-    var comments=document.getElementById('comments');
-    var commentContent=comments.innerHTML;
-    var display=document.getElementById('display');
-    display.innerHTML=commentContent;
-    
-};
+app.get('/ui/main.js', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'main.js'));
+});
 
 
 // Do not change port, otherwise your app won't run on IMAD servers
