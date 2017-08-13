@@ -1,6 +1,6 @@
 console.log('Loaded!');
 
-var commentsButton=document.getElementById('commentsButton');
+/*var commentsButton=document.getElementById('commentsButton');
 commentsButton.onclick=function(){
     alert('hi');
     var comments=document.getElementById('comments');
@@ -8,4 +8,4 @@ commentsButton.onclick=function(){
     var display=document.getElementById('display');
     display.innerHTML=commentContent;
     
-};
+};*/
