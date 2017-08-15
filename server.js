@@ -71,12 +71,11 @@ function createHtmlTemplate(data){
 }
 
 var comments=[];
-var comment=document.getElementById('comments');
-var commentContent=comment.value;
-app.get('/:articleName', function (req, res) {
+
+app.get('/:articleName?comment', function (req, res) {
   
-  var articleName=req.params.articleName;
-  comments.push(commentContent);
+  var comment=req.query.comment;
+  comments.push(comment);
   res.send(createHtmlTemplate(articles[articleName])+JSON.stringify(comments));
 });
 
