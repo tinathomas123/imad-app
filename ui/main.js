@@ -4,7 +4,7 @@ alert('inside main.js');
 
 var commentsButton=document.getElementById('commentsButton');
 commentsButton.onclick=function(){
-    alert('hi');
+    //alert('hi');
     var comment=document.getElementById('comments');
     var commentContent=comment.value;
     
@@ -13,6 +13,7 @@ commentsButton.onclick=function(){
         if(request.readyState===XMLHttpRequest.DONE){
             if(request.status===200){
                 var comments=request.responseText;
+                alert(comments);
                 JSON.parse(comments);
                 var displayContent='';
                 for(var i=0;i<comments.length;i++){
