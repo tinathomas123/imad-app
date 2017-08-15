@@ -72,11 +72,11 @@ function createHtmlTemplate(data){
 
 var comments=[];
 
-app.get('/:articleName?comment', function (req, res) {
+app.get('/:articleName', function (req, res) {
   
-  var comment=req.query.comment;
-  comments.push(comment);
-  res.send(JSON.stringify(comments));
+  //var comment=req.query.comment;
+  //comments.push(comment);
+  res.send(createHtmlTemplate(articles[articleName]));
 });
 
 
