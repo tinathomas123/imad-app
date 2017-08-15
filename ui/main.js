@@ -15,7 +15,7 @@ commentsButton.onclick=function(){
                 var comments=request.responseText;
                 alert(comments);
                 JSON.parse(comments);
-                var content=document.getElementById('display');
+                var content=comments.getElementById('display');
                 alert(content);
                 var displayContent='';
                 for(var i=0;i<comments.length;i++){
