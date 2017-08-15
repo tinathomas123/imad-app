@@ -17,7 +17,7 @@ commentsButton.onclick=function(){
                 JSON.parse(comments);
                 var displayContent='';
                 for(var i=0;i<comments.length;i++){
-                    displayContent='<br/>'+comments[i];
+                    displayContent+='<br/>'+comments[i];
                 }
                 
                 var display=document.getElementById('display');
@@ -26,9 +26,9 @@ commentsButton.onclick=function(){
         }
         
         
-    }
+    };
     
-    request.open('GET',"http://christinethomas221.imad.hasura-app.io/articeOne");
+    request.open('GET',"http://christinethomas221.imad.hasura-app.io/articleOne");
     request.send(null);
     
     
