@@ -14,8 +14,9 @@ commentsButton.onclick=function(){
             if(request.status===200){
                 var comments=request.responseText;
                 alert(comments);
-                JSON.parse(comments);
-                var content=comments.getElementById('display');
+                var content=comments.getElementById('display').value;
+                JSON.parse(content);
+                
                 alert(content);
                 var displayContent='';
                 for(var i=0;i<comments.length;i++){
