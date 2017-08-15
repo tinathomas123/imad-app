@@ -70,10 +70,14 @@ function createHtmlTemplate(data){
     
 }
 
+var comments=[];
 app.get('/:articleName', function (req, res) {
   
   var articleName=req.params.articleName;
-  res.send(createHtmlTemplate(articles[articleName]));
+  var comment=document.getElementById('comments');
+  var commentContent=comment.value;
+  comments.push(commentContent);
+  res.send(createHtmlTemplate(articles[articleName])+JSON.stringify(comments));
 });
 
 
