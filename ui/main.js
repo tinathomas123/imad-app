@@ -5,6 +5,8 @@ alert('inside main.js');
 var commentsButton=document.getElementById('commentsButton');
 commentsButton.onclick=function(){
     alert('hi');
+    var comment=document.getElementById('comments');
+    var commentContent=comment.value;
     
     var request=new XMLHttpRequest();
     request.onreadystatechange=function(){
