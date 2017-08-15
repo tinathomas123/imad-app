@@ -76,7 +76,7 @@ app.get('/:articleName?comment', function (req, res) {
   
   var comment=req.query.comment;
   comments.push(comment);
-  res.send(createHtmlTemplate(articles[articleName])+JSON.stringify(comments));
+  res.send(JSON.stringify(comments));
 });
 
 
