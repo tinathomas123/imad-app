@@ -73,7 +73,7 @@ function createHtmlTemplate(data){
 var comments=[];
 
 app.get('/:articleName', function (req, res) {
-  
+  var articleName=req.params.articleName;
   //var comment=req.query.comment;
   //comments.push(comment);
   res.send(createHtmlTemplate(articles[articleName]));
