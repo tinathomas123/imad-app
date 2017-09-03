@@ -69,6 +69,7 @@ app.post('/reg-user',function(req,res){
     pool.connect((err, client, release) => {
     
     pool.query('INSERT INTO customer (username,password) VALUES ($1,$2)', [username,dbString], (err,result)=>{
+        release();
        if(err){
            result.status(500).send('error!'+err.toString());
        }else{
