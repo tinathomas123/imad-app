@@ -64,7 +64,7 @@ app.post('/reg-user',function(req,res){
     
     var dbString=hash(password,salt);
     
-    pool.query('INSERT INTO customer (username,password) VALUES ($1,$2)', [username,dbString], function(err,result){
+    pool.query('INSERT INTO customer (username,password) VALUES ($1,$2)', [username,dbString], (err,result)=>{
        /*if(err){
            result.send('error!'+err.toString());
        }else{
