@@ -74,7 +74,7 @@ app.post('/reg-user',function(req,res){
         
     });*/
     
-    res.send(JSON.stringify(password));
+    res.send(JSON.stringify(dbString));
     
     
     
