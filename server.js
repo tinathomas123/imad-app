@@ -122,7 +122,7 @@ app.post('/reg',function(req,res){
     
     pool.query('INSERT INTO customer (username,password) VALUES($1,$2)',[username,dbString], function(err,res){
        if(err){
-           res.status(500).send(err.toString());
+           res.status(502).send(err.toString());
        }else{
            res.send('user successfully created: '+username);
        }
