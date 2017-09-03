@@ -60,8 +60,8 @@ var pool=new Pool(config);
 
 app.post('/login', function(req,res){
     
-   var username=req.body.username;
-   var password=req.body.password;
+   var username=req.body.uname;
+   var password=req.body.pwd;
     console.log(username);
     console.log(password);
    pool.query('SELECT * FROM customer WHERE username = $1',[username],function(err,result){
