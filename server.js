@@ -66,10 +66,10 @@ app.post('/reg-user',function(req,res){
     
     var dbString=hash(password,salt);
     
-    pool.connect((err, client, release) => {
+    
     
     pool.query('INSERT INTO customer (username,password) VALUES ($1,$2)', [username,dbString], (err,result)=>{
-        release();
+       
        if(err){
            result.status(500).send('error!'+err.toString());
        }else{
@@ -79,7 +79,7 @@ app.post('/reg-user',function(req,res){
         
     });
     
-    });
+    
     
     //res.send(JSON.stringify(dbString));
     
