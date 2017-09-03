@@ -43,6 +43,33 @@ var articles={
         content: 'This is my first article.'
     };*/
 
+function hash(input,password){
+    var hashed=crypto.pbkdf2Sync(input,salt,10000,512,'sha512');
+    return ['pbkdf2Sync','10000',salt,hashed.toString('hex')].join('$');
+}
+
+app.post('/reg',function(req,res){
+    var username=req.body.username;
+    var password=req.body.password;
+    
+    var salt=crypto.randomBytes(128).toString('hex');
+    
+    var dbString=hash(password,salt);
+    
+    pool.query('INSERT INTO user (username,password) VALUES ($1,$2)',[username,dbString], function(err,res){
+       if(err){
+           res.status(500).send(err.toString());
+       }else{
+           res.send('user successfully created: '+username);
+       }
+       
+        
+    });
+    
+    
+});
+
+
 function createHtmlTemplate(data){
     
     var title=data.title;
@@ -95,31 +122,7 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-function hash(input,password){
-    var hashed=crypto.pbkdf2Sync(input,salt,10000,512,'sha512');
-    return ['pbkdf2Sync','10000',salt,hashed.toString('hex')].join('$');
-}
 
-app.post('/reg',function(req,res){
-    var username=req.body.username;
-    var password=req.body.password;
-    
-    var salt=crypto.randomBytes(128).toString('hex');
-    
-    var dbString=hash(password,salt);
-    
-    pool.query('INSERT INTO user (username,password) VALUES ($1,$2)',[username,dbString], function(err,res){
-       if(err){
-           res.status(500).send(err.toString());
-       }else{
-           res.send('user successfully created: '+username);
-       }
-       
-        
-    });
-    
-    
-});
 
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
