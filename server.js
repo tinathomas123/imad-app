@@ -43,7 +43,7 @@ app.use(bodyParser.json());
         content: 'This is my first article.'
     };*/
 
-var pool=new Pool(config);
+
 
 function hash(input,salt){
     var hashed=crypto.pbkdf2Sync(input,salt,10000,512,'sha512');
@@ -56,6 +56,8 @@ app.get('/hash/:input',function(req,res){
     res.send(hashedString);
 });
 
+var pool=new Pool(config);
+
 app.post('/reg-user',function(req,res){
     var username=req.body.username;
     var password=req.body.password;
@@ -66,7 +68,7 @@ app.post('/reg-user',function(req,res){
     
     pool.query('INSERT INTO customer (username,password) VALUES ($1,$2)', [username,dbString], (err,result)=>{
        if(err){
-           result.send('error!'+err.toString());
+           result.status(500).send('error!'+err.toString());
        }else{
            result.send('user successfully created: '+username);
        }
