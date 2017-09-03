@@ -70,7 +70,7 @@ app.post('/login', function(req,res){
            result.status(500).send('error!'+err.toString());
            //console.log(err.toString());
        }else if(result.rows.length===0){
-           result.status(403).send('username or password is invalid');
+           result.send(403).send('username or password is invalid');
        }else{
            var dbString=result.rows[0].password;
            var salt=dbString.split('$')[2];
