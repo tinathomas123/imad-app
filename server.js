@@ -64,7 +64,7 @@ app.post('/reg-user',function(req,res){
     
     var dbString=hash(password,salt);
     
-    pool.query('INSERT INTO customer (username,password) VALUES($1,$2)',[username,dbString], function(err,res){
+    /*pool.query('INSERT INTO customer (username,password) VALUES($1,$2)',[username,dbString], function(err,res){
        if(err){
            res.status(500).send(err.toString());
        }else{
@@ -72,7 +72,9 @@ app.post('/reg-user',function(req,res){
        }
        
         
-    });
+    });*/
+    
+    res.send(JSON.stringify(username));
     
     
     
