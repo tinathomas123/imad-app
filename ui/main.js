@@ -25,8 +25,8 @@ submit.onclick=function(){
         
     };
     
-    var username=document.getElementById('username');
-    var password=document.getElementById('password');
+    var username=document.getElementById('username').value;
+    var password=document.getElementById('password').value;
     
     request.open('POST',"http://christinethomas221.imad.hasura-app.io/login");
     request.setRequestHeader('Content-Type','application/json');
