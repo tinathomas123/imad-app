@@ -25,12 +25,13 @@ submit.onclick=function(){
         
     };
     
-    var username=document.getElementById('username');
-    var password=document.getElementById('password');
+    //var username=document.getElementById('username');
+    //var password=document.getElementById('password');
     
-    request.open('POST',"http://christinethomas221.imad.hasura-app.io/login");
-    req.setRequestHeader('Content-Type','application/json');
-    request.send(JSON.stringify({username:'username',password:'password'}));
+    request.open('GET',"http://christinethomas221.imad.hasura-app.io/");
+    //req.setRequestHeader('Content-Type','application/json');
+    //request.send(JSON.stringify({username:'username',password:'password'}));
+    request.send(null);
     
     
 };
