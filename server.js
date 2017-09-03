@@ -72,7 +72,7 @@ app.post('/reg-user',function(req,res){
        
        if(err){
            //result.status(500).send('error!'+err.toString());
-           console.log(err);
+           console.log(err.toString());
        }else{
            result.send('user successfully created: '+username);
        }
