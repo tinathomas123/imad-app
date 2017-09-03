@@ -64,7 +64,7 @@ app.post('/login', function(req,res){
    var password=req.body.pwd;
     console.log(username);
     console.log(password);
-   pool.query('SELECT * FROM customer WHERE username = $1',[username],function(err,result){
+   pool.query('SELECT * FROM "customer" WHERE username = $1',[username],function(err,result){
        alert('inside pool');
        if(err){
            result.status(500).send('error!'+err.toString());
