@@ -16,7 +16,7 @@ var app = express();
 app.use(morgan('combined'));
 app.use(bodyParser.json());
 
-var articles={
+/*var articles={
     
     articleOne:{
         title: 'Article One',
@@ -36,7 +36,7 @@ var articles={
         content: 'This is my third article.'
     }
 };
-
+*/
 /*var articleOne={
         title: 'Article One',
         header: 'Article One',
@@ -105,6 +105,12 @@ function hash(input,salt){
     var hashed=crypto.pbkdf2Sync(input,salt,10000,512,'sha512');
     return ['pbkdf2Sync','10000',salt,hashed.toString('hex')].join('$');
 }
+
+app.get('/hash/:input',function(req,res){
+    
+    var hashedString=hash(req.params.input,'this-is-a-random-string');
+    res.send(hashedString);
+});
 
 app.post('/reg',function(req,res){
     var username=req.body.username;
