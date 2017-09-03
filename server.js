@@ -58,6 +58,30 @@ app.get('/hash/:input',function(req,res){
 
 var pool=new Pool(config);
 
+app.post('/login', function(req,res){
+    
+   var username=req.body.username;
+   var password=req.body.password;
+   
+   pool.query('SELECT * FROM customer WHERE username = $1',[username],function(err,result){
+       if(err){
+           result.status(500).send('error!'+err.toString());
+           //console.log(err.toString());
+       }else if(result.rows.length===0){
+           result.status(403).send('username or password is invalid');
+       }else{
+           var dbString=result.rows[0].password;
+           var salt=dbString.split('$')[2];
+           var hashedPassword=hash(password,salt);
+           if(dbString===hashedPassword){
+               result.send('credentials correct');
+           }else{
+               result.send('invalid credentials');
+           }
+       }
+   });
+});
+
 app.post('/reg-user',function(req,res){
     var username=req.body.username;
     var password=req.body.password;
@@ -151,29 +175,7 @@ app.get('/ui/main.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main.js'));
 });
 
-app.post('/login', function(req,res){
-    
-   var username=req.body.username;
-   var password=req.body.password;
-   
-   pool.query('SELECT * FROM customer WHERE username = $1',[username],function(err,result){
-       if(err){
-           result.status(500).send('error!'+err.toString());
-           //console.log(err.toString());
-       }else if(result.rows.length===0){
-           result.status(403).send('username or password is invalid');
-       }else{
-           var dbString=result.rows[0].password;
-           var salt=dbString.split('$')[2];
-           var hashedPassword=hash(password,salt);
-           if(dbString===hashedPassword){
-               result.send('credentials correct');
-           }else{
-               result.send('invalid credentials');
-           }
-       }
-   });
-});
+
 
 
 app.get('/ui/madi.png', function (req, res) {
