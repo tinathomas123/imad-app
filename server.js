@@ -69,7 +69,9 @@ app.post('/reg',function(req,res){
     });
     
     
+    
 });
+
 
 
 /*function createHtmlTemplate(data){
