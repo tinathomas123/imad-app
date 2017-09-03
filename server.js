@@ -70,7 +70,7 @@ app.post('/reg',function(req,res){
 });
 
 
-function createHtmlTemplate(data){
+/*function createHtmlTemplate(data){
     
     var title=data.title;
     var content=data.content;
@@ -116,7 +116,7 @@ app.get('/:articleName', function (req, res) {
   //comments.push(comment);
   res.send(createHtmlTemplate(articles[articleName]));
 });
-
+*/
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
