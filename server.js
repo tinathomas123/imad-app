@@ -1,9 +1,20 @@
 var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
+var Pool=require('pg').Pool;
+var config={
+    username:'christinethomas221',
+    database:'christinethomas221',
+    host:'db.imad.hasura-app.io',
+    port:'5432',
+    password:process.env.DB_PASSWORD
+};
+var crypto=require('crypto');
+var bodyParser=require('body-parser');
 
 var app = express();
 app.use(morgan('combined'));
+app.use(bodyParser.json());
 
 var articles={
     
@@ -82,6 +93,32 @@ app.get('/:articleName', function (req, res) {
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
+});
+
+function hash(input,password){
+    var hashed=crypto.pbkdf2Sync(input,salt,10000,512,'sha512');
+    return ['pbkdf2Sync','10000',salt,hashed.toString('hex')].join('$');
+}
+
+app.post('/reg',function(req,res){
+    var username=req.body.username;
+    var password=req.body.password;
+    
+    var salt=crypto.randomBytes(128).toString('hex');
+    
+    var dbString=hash(password,salt);
+    
+    pool.query('INSERT INTO user (username,password) VALUES ($1,$2)',[username,dbString], function(err,res){
+       if(err){
+           res.status(500).send(err.toString());
+       }else{
+           res.send('user successfully created: '+username);
+       }
+       
+        
+    });
+    
+    
 });
 
 app.get('/ui/style.css', function (req, res) {
