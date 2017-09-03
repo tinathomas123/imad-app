@@ -65,12 +65,12 @@ app.post('/reg-user',function(req,res){
     var dbString=hash(password,salt);
     
     pool.query('INSERT INTO customer (username,password) VALUES ($1,$2)', [username,dbString], (err,result)=>{
-       /*if(err){
+       if(err){
            result.send('error!'+err.toString());
        }else{
            result.send('user successfully created: '+username);
-       }*/
-        result.send('user successfully created: '+username);
+       }
+        //result.send('user successfully created: '+username);
         
     });
     
