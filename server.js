@@ -66,7 +66,7 @@ app.post('/reg-user',function(req,res){
     
     pool.query('INSERT INTO customer (username,password) VALUES ($1,$2)',[username,dbString], function(err,res){
        if(err){
-           res.send(err.toString());
+           res.send('error!'+err.toString());
        }else{
            res.send('user successfully created: '+username);
        }
