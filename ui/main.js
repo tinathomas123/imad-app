@@ -12,19 +12,13 @@ submit.onclick=function(){
     request.onreadystatechange=function(){
         if(request.readyState===XMLHttpRequest.DONE){
             if(request.status===200){
-                var comments=request.responseText;
-                alert(comments);
-                var content=comments.getElementById('display').value;
-                JSON.parse(content);
-                
-                alert(content);
-                var displayContent='';
-                for(var i=0;i<comments.length;i++){
-                    displayContent+='<br/>'+comments[i];
-                }
-                
-                var display=document.getElementById('display');
-                display.innerHTML=displayContent;
+                alert('login successful');
+            }
+            else if(request.status===403){
+                alert('Incorrect login credentials');
+            }
+            else if(request.status===500){
+                alert('Internal server error');
             }
         }
         
