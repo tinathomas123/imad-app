@@ -56,7 +56,7 @@ app.get('/hash/:input',function(req,res){
     res.send(hashedString);
 });
 
-app.post('/reg',function(req,res){
+app.post('/reg-user',function(req,res){
     var username=req.body.username;
     var password=req.body.password;
     
@@ -66,7 +66,7 @@ app.post('/reg',function(req,res){
     
     pool.query('INSERT INTO customer (username,password) VALUES($1,$2)',[username,dbString], function(err,res){
        if(err){
-           res.status(502).send(err.toString());
+           res.status(500).send(err.toString());
        }else{
            res.send('user successfully created: '+username);
        }
