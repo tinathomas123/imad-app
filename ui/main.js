@@ -31,8 +31,11 @@ commentsButton.onclick=function(){
         
     };
     
-    request.open('GET',"http://christinethomas221.imad.hasura-app.io/articleOne");
-    request.send(null);
+    var username=document.getElementById('username');
+    var password=document.getElementById('password');
+    
+    request.open('POST',"http://christinethomas221.imad.hasura-app.io/reg");
+    request.send(JSON.stringify({username:'username',password:'password'}));
     
     
 };
