@@ -35,6 +35,7 @@ submit.onclick=function(){
     var password=document.getElementById('password');
     
     request.open('POST',"http://christinethomas221.imad.hasura-app.io/reg");
+    req.setRequestHeader('Content-Type','application/json');
     request.send(JSON.stringify({username:'username',password:'password'}));
     
     
