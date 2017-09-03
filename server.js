@@ -66,6 +66,8 @@ app.post('/reg-user',function(req,res){
     
     var dbString=hash(password,salt);
     
+    pool.connect((err, client, release) => {
+    
     pool.query('INSERT INTO customer (username,password) VALUES ($1,$2)', [username,dbString], (err,result)=>{
        if(err){
            result.status(500).send('error!'+err.toString());
@@ -74,6 +76,8 @@ app.post('/reg-user',function(req,res){
        }
         //result.send('user successfully created: '+username);
         
+    });
+    
     });
     
     //res.send(JSON.stringify(dbString));
